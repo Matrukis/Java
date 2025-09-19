@@ -1,46 +1,49 @@
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        Personagem Crusader1 = new Personagem();
-        Crusader1.nome = "Jotaro Kujo";
-        Crusader1.idade = 17;
-        Crusader1.tamanho = 1.95f;
-        Crusader1.stand = "Star Platinum";
 
-        Personagem Crusader2 = new Personagem();
-        Crusader2.nome = "Noriaki Kakyoin";
-        Crusader2.idade = 17;
-        Crusader2.tamanho = 1.78f;
-        Crusader2.stand = "Hierophant Green";
+        Calculadora calc = new Calculadora();
+        Scanner sc = new Scanner(System.in);
 
-        Personagem Crusader3 = new Personagem();
-        Crusader3.nome = "Joseph Joestar";
-        Crusader3.idade = 68;
-        Crusader3.tamanho = 1.95f;
-        Crusader3.stand = "Hermit Purple";
+        System.out.println("Digite o primeiro número: ");
+        int num1 = sc.nextInt();
 
-        Personagem Crusader4 = new Personagem();
-        Crusader4.nome = "Jean Pierre Polnareff";
-        Crusader4.idade = 22;
-        Crusader4.tamanho = 1.85f;
-        Crusader4.stand = "Silver Chariot";
-        
-        Personagem Crusader5 = new Personagem();
-        Crusader5.nome = "Muhammad Avdol";
-        Crusader5.idade = 20;
-        Crusader5.tamanho = 1.88f;
-        Crusader5.stand = "Magician's Red";
+        System.out.println("Digite o segundo número: ");
+        int num2 = sc.nextInt();
 
-        Personagem Crusader6 = new Personagem();
-        Crusader6.nome = "Iggy";
-        Crusader6.idade = 4;
-        Crusader6.tamanho = 33.3f;
-        Crusader6.stand = "The Fool";
+        System.out.println("Escolha uma opção\n 1. Adição \n 2. Subtração \n 3. Multiplicação \n 4. Divisão");
 
-        System.out.format("Personagem: %s com idade %d com tamanho %.2fm com stand %s\n", Crusader1.nome, Crusader1.idade, Crusader1.tamanho, Crusader1.stand);
-        System.out.format("Personagem: %s com idade %d com tamanho %.2fm com stand %s\n", Crusader2.nome, Crusader2.idade, Crusader2.tamanho, Crusader2.stand);
-        System.out.format("Personagem: %s com idade %d com tamanho %.2fm com stand %s\n", Crusader3.nome, Crusader3.idade, Crusader3.tamanho, Crusader3.stand);
-        System.out.format("Personagem: %s com idade %d com tamanho %.2fm com stand %s\n", Crusader4.nome, Crusader4.idade, Crusader4.tamanho, Crusader4.stand);
-        System.out.format("Personagem: %s com idade %d com tamanho %.2fm com stand %s\n", Crusader5.nome, Crusader5.idade, Crusader5.tamanho, Crusader5.stand);
-        System.out.format("Personagem: %s com idade %d com tamanho %.1fcm com stand %s", Crusader6.nome, Crusader6.idade, Crusader6.tamanho, Crusader6.stand);
+        int escolha = sc.nextInt();
+        while (escolha != 1 && escolha != 2 && escolha != 3 && escolha != 4){
+            System.out.println("Erro: Digite '1' para Adição. '2' para Subtração '3' para Multiplicação '4' para Divisão");
+            escolha = sc.nextInt();
+        }
+
+        int resultado = 0;
+        double resultadoDouble = 0;
+
+
+        switch (escolha) {
+            case 1:
+                resultado = calc.somar(num1, num2);
+                System.out.println("Resultado: " + resultado);
+                break;
+            case 2:
+                resultado = calc.subtrair(num1, num2);
+                System.out.println("Resultado: " + resultado);
+                break;
+            case 3:
+                resultado = calc.multiplicar(num1, num2);
+                System.out.println("Resultado: " + resultado);
+                break;
+            case 4:
+                resultadoDouble = calc.dividir(num1, num2);
+                System.out.println("Resultado: " + resultadoDouble);
+                break;
+            default:
+                System.out.println("Opção Ínvalida!");
+                return;
+        }
     }
 }
